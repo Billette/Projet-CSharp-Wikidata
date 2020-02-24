@@ -1,0 +1,36 @@
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\ProjetWPF.csprojAssemblyReference.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\MainWindow.g.cs
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\App.g.cs
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\WpfApp1.exe
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\WpfApp1.pdb
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\bin\Debug\WpfApp1.exe.config
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\bin\Debug\WpfApp1.exe
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\bin\Debug\WpfApp1.pdb
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\MainWindow.baml
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\WpfApp1.g.resources
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\ProjetWPF.csproj.GenerateResource.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\ProjetWPF.csproj.CoreCompileInputs.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet\ProjetWPF\obj\Debug\ProjetWPF.csproj.CopyComplete
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\bin\Debug\WpfApp1.exe.config
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\bin\Debug\WpfApp1.exe
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\bin\Debug\WpfApp1.pdb
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\ProjetWPF.csprojAssemblyReference.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\MainWindow.g.cs
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\App.g.cs
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\MainWindow.baml
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\WpfApp1.g.resources
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\ProjetWPF.csproj.GenerateResource.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\ProjetWPF.csproj.CoreCompileInputs.cache
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\ProjetWPF.csproj.CopyComplete
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\WpfApp1.exe
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\ProjetWPF\obj\Debug\WpfApp1.pdb
