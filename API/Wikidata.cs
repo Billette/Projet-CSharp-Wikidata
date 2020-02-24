@@ -3,34 +3,25 @@ using System.Collections.Generic;
 using System.Net.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    public class Cities
+    class Wikidata
     {
-        public List<City> list { get; set; }
-    }
-
-    public class City
-    {
-        public string cityRef { get; set; }
-        public string population { get; set; }
-        public string postalCode { get; set; }
-        public string cityLabel { get; set; }        
-    }
-
-    class Program
-    {
-        static async public void MyHttp()
+        static public Cities requestedCities { get; set; }
+        
+        static public async Task<string> Request(string _postalCodeMin, string _postalCodeMax, string _populationMin, string _populationMax, string _cityName)
         {
             Cities cities = new Cities();
             List<City> cityList = new List<City>();
 
-            string postalCodeMin = "20000";
-            string cityName = "";
-            string postalCodeMax = "75999";
-            string populationMin = "2000";
-            string populationMax = "3500000";
+            string postalCodeMin = _postalCodeMin;
+            string postalCodeMax = _postalCodeMax;
+            string populationMin = _populationMin;
+            string populationMax = _populationMax;
+            string cityName = _cityName;
+
             string Path;
 
             if(cityName == "")
@@ -46,14 +37,14 @@ namespace WpfApp1
             client.DefaultRequestHeaders.Add("User-Agent", "C# App");
 
             //var result = await client.GetAsync(Path);
-            var content = await client.GetStringAsync(Path);
+            string content = await client.GetStringAsync(Path);
 
             JObject jsonObj = JObject.Parse(content);
 
             //Console.WriteLine(jsonObj["results"]["bindings"][2]);
             char dbQuote = (char)34;
 
-            /** Black Magic **/
+            // Black Magic
             foreach (Object o in jsonObj["results"]["bindings"])
             {
                 String str = o.ToString();                
@@ -88,9 +79,9 @@ namespace WpfApp1
             }
 
             cities.list = cityList;
-            
-            // Visualisation
-            if(cities.list.Count == 0)
+
+            /*
+            if (cities.list.Count == 0)
                 Console.WriteLine("No result found.");
             else
             {
@@ -103,7 +94,11 @@ namespace WpfApp1
                     Console.WriteLine("----");
                 }
             }
+            */
 
+            requestedCities = cities;
+            return "OK";
         }
+        
     }
 }

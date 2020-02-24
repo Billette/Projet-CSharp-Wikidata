@@ -28,11 +28,36 @@ namespace WpfApp1
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(str));
         }
 
+        public async void makeRequest()
+        {
+            await Wikidata.Request("20000", "75999", "2000", "500000", "");
+
+            // Visualisation
+            if (Wikidata.requestedCities != null)
+            {
+                if (Wikidata.requestedCities.list.Count == 0)
+                    Console.WriteLine("No result found.");
+                else
+                {
+                    foreach (City c in Wikidata.requestedCities.list)
+                    {
+                        Console.WriteLine("City name : " + c.cityLabel);
+                        Console.WriteLine("Population : " + c.population);
+                        Console.WriteLine("Postal code : " + c.postalCode);
+                        Console.WriteLine("Wikidata Reference : " + c.cityRef);
+                        Console.WriteLine("----");
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error : Bad Request");
+            }
+        }
+
         public VM()
         {
-            Program.MyHttp();
-            M model = new M();
-            myText = "ECE Paris";
+             makeRequest();    
 
             collection = new ObservableCollection<COUNTRY>();
             COUNTRY c1 = new COUNTRY("France", "Paris");

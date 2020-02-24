@@ -24,7 +24,6 @@ namespace WpfApp1
         {
             InitializeComponent();
             this.DataContext = new VM();
-            //TB.Text = "tutu";
         }
 
     }
