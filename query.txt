@@ -1,0 +1,28 @@
+Query : 
+
+SELECT DISTINCT ?city ?cityLabel ?population ?code_postal WHERE {
+  ?city wdt:P31 wd:Q484170 .
+  ?city  wdt:P1082 ?population .
+  ?city wdt:P281 ?code_postal .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE]". }
+  FILTER ( (?population >= 2000 && ?population <= 3500000) && (?code_postal >= "75000" && ?code_postal <= "75999"))
+}
+
+
+URL : 
+https://query.wikidata.org/sparql?query=SELECT%20DISTINCT%20%3Fcity%20%3FcityLabel%20%3Fpopulation%20%3Fcode_postal%20WHERE%20%7B%0A%20%20%3Fcity%20wdt%3AP31%20wd%3AQ484170%20.%0A%20%20%3Fcity%20%20wdt%3AP1082%20%3Fpopulation%20.%0A%20%20%3Fcity%20wdt%3AP281%20%3Fcode_postal%20.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%22.%20%7D%0A%20%20FILTER%20(%20(%3Fpopulation%20%3E%3D%202000%20%26%26%20%3Fpopulation%20%3C%3D%203500000)%20%26%26%20(%3Fcode_postal%20%3E%3D%20%2275000%22%20%26%26%20%3Fcode_postal%20%3C%3D%20%2275999%22))%0A%7D
+
+
+
+
+
+SELECT DISTINCT ?city ?cityLabel ?city_FR ?population ?code_postal WHERE {
+  ?city wdt:P31 wd:Q484170 .
+  ?city rdfs:label "Paris"@fr .
+  ?city  wdt:P1082 ?population .
+  ?city wdt:P281 ?code_postal .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "fr".
+                         ?city rdfs:label ?city_FR.
+                   } hint:Prior hint:runLast false.  
+}
+
