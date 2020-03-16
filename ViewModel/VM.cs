@@ -5,17 +5,65 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WpfApp1
 {
-    class COUNTRY
+    class Requester : ICommand
     {
-        public string Name { get; set; }
-        public string CapitalCity { get; set; }
-        public COUNTRY (string n, string c) { Name = n; CapitalCity = c; }
+        #region ICommand Members  
 
+        private VM viewModel;
+        public VM ViewModel
+        {
+            get { return this.viewModel; }
+            set
+            {
+                this.viewModel = value;
+            }
+        }
+
+        public Requester(VM _viewModel)
+        {
+            ViewModel = _viewModel;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public void Execute(object parameter)
+        {
+            if(parameter != null)
+            {
+                Inputs inputs = (Inputs)parameter;
+                
+                string cityName = inputs.cityName;
+                if(cityName == null)
+                {
+                    cityName = "";
+                }
+                string minPop = inputs.minPop;
+                string maxPop = inputs.maxPop;
+                string minPostCode = inputs.minPostCode;
+                string maxPostCode = inputs.maxPostCode;
+                
+                ViewModel.MakeRequest(minPostCode, maxPostCode, minPop, maxPop, cityName);
+            } else
+            {
+                Console.WriteLine("No parameter");
+            }
+            
+            //Console.WriteLine("Clicked");
+        }
+        #endregion
     }
-
 
 
     class VM : INotifyPropertyChanged
@@ -28,9 +76,11 @@ namespace WpfApp1
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(str));
         }
 
-        public async void makeRequest()
+
+        public async void MakeRequest(string _postalCodeMin, string _postalCodeMax, string _populationMin, string _populationMax, string _cityName)
         {
-            await Wikidata.Request("20000", "75999", "2000", "500000", "");
+            await Wikidata.Request(_postalCodeMin, _postalCodeMax, _populationMin, _populationMax, _cityName);
+            ObservableCollection<City> CityCollection = new ObservableCollection<City>();
 
             // Visualisation
             if (Wikidata.requestedCities != null)
@@ -46,7 +96,11 @@ namespace WpfApp1
                         Console.WriteLine("Postal code : " + c.postalCode);
                         Console.WriteLine("Wikidata Reference : " + c.cityRef);
                         Console.WriteLine("----");
+
+                        CityCollection.Add(c);
                     }
+
+                    Collection = CityCollection;
                 }
             }
             else
@@ -55,62 +109,144 @@ namespace WpfApp1
             }
         }
 
+
         public VM()
         {
-             makeRequest();    
-
-            collection = new ObservableCollection<COUNTRY>();
-            COUNTRY c1 = new COUNTRY("France", "Paris");
-            COUNTRY c2 = new COUNTRY("Spain", "Madrid");
-            COUNTRY c3 = new COUNTRY("Italy", "Roma");
-            collection.Add(c1);
-            collection.Add(c2);
-            collection.Add(c3);
+            
         }
 
-        private COUNTRY selectedCountry;
-        public COUNTRY SelectedCountry
+        private ICommand mRequester;
+        public ICommand RequestCommand
+        {
+            get
+            {
+                if (mRequester == null)
+                    mRequester = new Requester(this);
+                return mRequester;
+            }
+            set
+            {
+                mRequester = value;
+            }
+        }
+
+        private City selectedCity;
+        public City SelectedCity
         {
             get {
-                return this.selectedCountry;
+                return this.selectedCity;
             }
             set {
-                selectedCountry = value;
-                MyText2 = SelectedCountry.CapitalCity;
-                OnPropertyChanged("SelectedCountry");
+                selectedCity = value;
+                if(selectedCity != null)
+                {
+                    DisplayPostalCode = SelectedCity.postalCode;
+                } else
+                {
+                    DisplayPostalCode = "No City selected";
+                }
+                OnPropertyChanged("SelectedCity");
             }
         }
 
 
-        private ObservableCollection<COUNTRY> collection;
-        public ObservableCollection<COUNTRY> Collection
+        private ObservableCollection<City> collection;
+        public ObservableCollection<City> Collection
         {
             get { return this.collection; }
-            set { this.collection = value; }
-        }
-
-        private string myText;
-        public string MyText
-        {
-            get { return this.myText; }
-            set
-            {
-                this.myText = value;
-                OnPropertyChanged("MyText");
+            set {
+                this.collection = value;
+                OnPropertyChanged("Collection");
             }
         }
 
-        private string myText2 = "No City selected";
-        public string MyText2
+        private string inputCityName = "";
+        public string InputCityName
         {
-            get { return this.myText2; }
+            get { return this.inputCityName; }
             set
             {
+                this.inputCityName = value;
+                AllInputs.cityName = value;
+                OnPropertyChanged("InputCityName");
+            }
+        }
 
-                this.myText2 = value;
+        private string inputMinPop;
+        public string InputMinPop
+        {
+            get { return this.inputMinPop; }
+            set
+            {
+                this.inputMinPop = value;
+                AllInputs.minPop = value;
+                OnPropertyChanged("InputMinPop");
+            }
+        }
 
-                //Console.WriteLine(this.myText2);
-                OnPropertyChanged("MyText2");
+        private string inputMaxPop;
+        public string InputMaxPop
+        {
+            get { return this.inputMaxPop; }
+            set
+            {
+                this.inputMaxPop = value;
+                AllInputs.maxPop = value;
+                OnPropertyChanged("InputMinPop");
+            }
+        }
+
+        private string inputMinPostCode;
+        public string InputMinPostCode
+        {
+            get { return this.inputMinPostCode; }
+            set
+            {
+                this.inputMinPostCode = value;
+                AllInputs.minPostCode = value;
+                OnPropertyChanged("InputMinPostCode");
+            }
+        }
+
+        private string inputMaxPostCode;
+        public string InputMaxPostCode
+        {
+            get { return this.inputMaxPostCode; }
+            set
+            {
+                this.inputMaxPostCode = value;
+                AllInputs.maxPostCode = value;
+                OnPropertyChanged("InputMaxPostCode");
+            }
+        }
+
+        // Make all the inputs into a single object
+        private Inputs allInputs;
+        public Inputs AllInputs
+        {
+            get {
+                if(allInputs == null)
+                {
+                    allInputs = new Inputs();
+                    return allInputs;
+                } else {
+                    return this.allInputs;
+                }
+            }
+            set
+            {
+                this.allInputs = value;
+            }
+        }
+
+        private string displayPostalCode = "No City selected";
+        public string DisplayPostalCode
+        {
+            get { return this.displayPostalCode; }
+            set
+            {
+                this.displayPostalCode = value;
+                OnPropertyChanged("DisplayPostalCode");
             }
         }
 

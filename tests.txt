@@ -1,0 +1,9 @@
+
+        <TextBox Name="TB2" Background="LightGray" Margin="578,466,80,25"
+            Text="{Binding DisplayPostalCode}" RenderTransformOrigin="0.388,0.827"/>
+
+        <ComboBox Name="CB"
+            ItemsSource="{Binding Collection}"
+            DisplayMemberPath="cityLabel"
+            SelectedItem="{Binding SelectedCity}"
+            Margin="59,484,499,39" />

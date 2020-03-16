@@ -80,22 +80,6 @@ namespace WpfApp1
 
             cities.list = cityList;
 
-            /*
-            if (cities.list.Count == 0)
-                Console.WriteLine("No result found.");
-            else
-            {
-                foreach (City c in cities.list)
-                {
-                    Console.WriteLine("City name : " + c.cityLabel);
-                    Console.WriteLine("Population : " + c.population);
-                    Console.WriteLine("Postal code : " + c.postalCode);
-                    Console.WriteLine("Wikidata Reference : " + c.cityRef);
-                    Console.WriteLine("----");
-                }
-            }
-            */
-
             requestedCities = cities;
             return "OK";
         }

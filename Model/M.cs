@@ -18,4 +18,14 @@ namespace WpfApp1
         public string postalCode { get; set; }
         public string cityLabel { get; set; }
     }
+
+    // Make all inputs into objects
+    public class Inputs
+    {
+        public string cityName { get; set; }
+        public string minPop { get; set; }
+        public string maxPop { get; set; }
+        public string minPostCode { get; set; }
+        public string maxPostCode { get; set; }
+    }
 }

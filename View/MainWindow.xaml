@@ -5,18 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Name="Foo">
-        <TextBox Name="TB" Background="LightGray" Margin="162,52,477,259"
-            Text="{Binding MyText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        
-        <ComboBox Name="CB"
-            ItemsSource="{Binding Collection}"
-            DisplayMemberPath="Name"
-            SelectedItem="{Binding SelectedCountry}"
-            Margin="162,204,346,177" />
-        
-        <TextBox Name="TB2" Background="LightGray" Margin="497,204,151,140"
-            Text="{Binding MyText2}"/>
+        Title="Wikidata Postal Finder" Height="600" Width="1100">
+    <Grid Name="Foo" Margin="0,0,0,0">
+        <TextBlock FontSize="42" FontWeight="Bold" Margin="288,14,346,499">Wikidata Postal Finder</TextBlock>
+
+        <TextBlock FontSize="20" Margin="54,62,864,472">Nom de la ville :</TextBlock>
+        <TextBox FontSize="20" Name="InputCityName" AcceptsReturn="True" Background="LightGray" Margin="54,94,742,440"
+            Text="{Binding InputCityName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock FontSize="20" Margin="161,131,851,406"> -- OU --</TextBlock>
+
+        <TextBlock FontSize="20" Margin="54,157,802,378">Population Minimum :</TextBlock>
+        <TextBox FontSize="20" Name="InputMinPop" AcceptsReturn="True" Background="LightGray" Margin="54,193,755,342"
+            Text="{Binding InputMinPop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock FontSize="20" Margin="54,231,802,302">Population Maximum :</TextBlock>
+        <TextBox FontSize="20" Name="InputMaxPop" AcceptsReturn="True" Background="LightGray" Margin="54,267,755,266"
+            Text="{Binding InputMaxPop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock FontSize="20" Margin="54,312,814,223">Code Postal Minimum :</TextBlock>
+        <TextBox FontSize="20" Name="InputMinPostCode" AcceptsReturn="True" Background="LightGray" Margin="54,346,755,186"
+            Text="{Binding InputMinPostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock FontSize="20" Margin="54,394,802,145">Code Postal Maximum :</TextBlock>
+        <TextBox FontSize="20" Name="InputMaxPostCode" AcceptsReturn="True" Background="LightGray" Margin="54,425,755,107"
+            Text="{Binding InputMaxPostCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        </TextBox>
+
+        <Button x:Name="btnRequest" Width="225" HorizontalAlignment="Center" FontSize="20" Content="Rechercher"
+               Background="LightGreen"
+               Command="{Binding Path=RequestCommand}"
+               CommandParameter="{Binding AllInputs}"
+               Margin="81,481,786,21"/>
+
+        <ListView FontSize="20" ItemsSource="{Binding Collection}" Margin="375,85,34,39">
+
+            <ListView.View>
+
+                <GridView AllowsColumnReorder="true">
+
+                    <GridViewColumn  DisplayMemberBinding=
+                          "{Binding Path=cityLabel}" 
+                      Header="Nom" Width="200"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=population}" 
+                      Header="Population" Width="110"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=postalCode}" 
+                      Header="Code Postal" Width="110"/>
+
+                    <GridViewColumn DisplayMemberBinding=
+                          "{Binding Path=cityRef}" 
+                      Header="Réf Wikidata                          " Width="470"/>
+
+                </GridView>
+
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
