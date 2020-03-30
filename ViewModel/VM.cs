@@ -44,15 +44,11 @@ namespace WpfApp1
             {
                 Inputs inputs = (Inputs)parameter;
                 
-                string cityName = inputs.cityName;
-                if(cityName == null)
-                {
-                    cityName = "";
-                }
-                string minPop = inputs.minPop;
-                string maxPop = inputs.maxPop;
-                string minPostCode = inputs.minPostCode;
-                string maxPostCode = inputs.maxPostCode;
+                string cityName = inputs.cityName ?? "";
+                string minPop = inputs.minPop ?? "";
+                string maxPop = inputs.maxPop ?? "";
+                string minPostCode = inputs.minPostCode ?? "";
+                string maxPostCode = inputs.maxPostCode ?? "";
                 
                 ViewModel.MakeRequest(minPostCode, maxPostCode, minPop, maxPop, cityName);
             } else
@@ -60,6 +56,53 @@ namespace WpfApp1
                 Console.WriteLine("No parameter");
             }
             
+            //Console.WriteLine("Clicked");
+        }
+        #endregion
+    }
+
+    class Hyperlinker : ICommand
+    {
+        #region ICommand Members  
+
+        private VM viewModel;
+        public VM ViewModel
+        {
+            get { return this.viewModel; }
+            set
+            {
+                this.viewModel = value;
+            }
+        }
+
+        public Hyperlinker(VM _viewModel)
+        {
+            ViewModel = _viewModel;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public void Execute(object parameter)
+        {
+            if (parameter != null)
+            {
+                string url = (string)parameter;
+                Console.WriteLine("Navigation to URL : {0}", url);
+                System.Diagnostics.Process.Start(url);
+            }
+            else
+            {
+                Console.WriteLine("No parameter");
+            }
+
             //Console.WriteLine("Clicked");
         }
         #endregion
@@ -127,6 +170,21 @@ namespace WpfApp1
             set
             {
                 mRequester = value;
+            }
+        }
+
+        private ICommand mHyperlinker;
+        public ICommand HyperlinkCommand
+        {
+            get
+            {
+                if (mHyperlinker == null)
+                    mHyperlinker = new Hyperlinker(this);
+                return mHyperlinker;
+            }
+            set
+            {
+                mHyperlinker = value;
             }
         }
 

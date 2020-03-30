@@ -52,3 +52,4 @@ C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\obj\Deb
 C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\obj\Debug\ProjetWPF.csprojAssemblyReference.cache
 C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\obj\Debug\View\MainWindow.g.cs
 C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\obj\Debug\View\MainWindow.baml
+C:\Users\Maxime Billette\Desktop\ECE\Ing4\C-Sharp\Projet CSharp Wikidata\obj\Debug\GeneratedInternalTypeHelper.g.cs

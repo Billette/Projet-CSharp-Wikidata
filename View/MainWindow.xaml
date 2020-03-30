@@ -6,7 +6,10 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Wikidata Postal Finder" Height="600" Width="1100">
-    <Grid Name="Foo" Margin="0,0,0,0">
+    <Window.Resources>
+        <local:VM x:Key="ViewModel"/>
+    </Window.Resources>
+    <Grid Name="MainGrid" Margin="0,0,0,0">
         <TextBlock FontSize="42" FontWeight="Bold" Margin="288,14,346,499">Wikidata Postal Finder</TextBlock>
 
         <TextBlock FontSize="20" Margin="54,62,864,472">Nom de la ville :</TextBlock>
@@ -54,10 +57,21 @@
                     <GridViewColumn DisplayMemberBinding=
                           "{Binding Path=postalCode}" 
                       Header="Code Postal" Width="110"/>
+                    <GridViewColumn
+                      Header="Réf Wikidata                          " 
+                      Width="470">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock>                                
+                                <Hyperlink Command="{Binding Source={StaticResource ViewModel},  Path=HyperlinkCommand}"
+                                           CommandParameter="{Binding cityRef}">
+                                    Wikidata Reference
+                                </Hyperlink>
+                                </TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
 
-                    <GridViewColumn DisplayMemberBinding=
-                          "{Binding Path=cityRef}" 
-                      Header="Réf Wikidata                          " Width="470"/>
+                    </GridViewColumn>
 
                 </GridView>
 
